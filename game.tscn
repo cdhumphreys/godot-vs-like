@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://brshuy1njccsr"]
+
+[ext_resource type="PackedScene" uid="uid://cmqay3jywm01p" path="res://tree.tscn" id="2_1o8sn"]
+[ext_resource type="PackedScene" uid="uid://dx8d1hrn7td5y" path="res://player.tscn" id="2_4yu8o"]
+[ext_resource type="PackedScene" uid="uid://8gpojs5ywk71" path="res://enemy.tscn" id="3_lm6uh"]
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1919.0
+offset_bottom = 1082.0
+
+[node name="trees" type="Node" parent="."]
+
+[node name="tree" parent="trees" instance=ExtResource("2_1o8sn")]
+position = Vector2(1747, 580)
+
+[node name="tree2" parent="trees" instance=ExtResource("2_1o8sn")]
+position = Vector2(457, 654)
+
+[node name="tree3" parent="trees" instance=ExtResource("2_1o8sn")]
+position = Vector2(1175, 229)
+
+[node name="tree4" parent="trees" instance=ExtResource("2_1o8sn")]
+position = Vector2(1309, 872)
+
+[node name="Player" parent="." instance=ExtResource("2_4yu8o")]
+y_sort_enabled = true
+position = Vector2(970, 539)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_lm6uh")]
+position = Vector2(245, 385)
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("3_lm6uh")]
+position = Vector2(617, 243)
