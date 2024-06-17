@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx8d1hrn7td5y"]
+[gd_scene load_steps=8 format=3 uid="uid://dx8d1hrn7td5y"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_tsiss"]
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="2_e6m4q"]
@@ -7,9 +7,29 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_11gqh"]
 radius = 30.0666
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fy4e"]
+bg_color = Color(0.223529, 0.290196, 0.2, 0.490196)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7cni"]
+bg_color = Color(0.254902, 0.729412, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x8t4o"]
+radius = 39.0
+height = 108.0
+
 [node name="Player" type="CharacterBody2D"]
 platform_floor_layers = 4294901760
 script = ExtResource("1_tsiss")
+MAX_HEALTH = 200.0
+DAMAGE_RATE = 50.0
 
 [node name="HappyBoo" parent="." instance=ExtResource("2_e6m4q")]
 
@@ -20,3 +40,24 @@ shape = SubResource("CircleShape2D_11gqh")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Gun" parent="." instance=ExtResource("3_l3b8s")]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -107.0
+offset_top = -144.0
+offset_right = 109.0
+offset_bottom = -117.0
+theme_override_styles/background = SubResource("StyleBoxFlat_0fy4e")
+theme_override_styles/fill = SubResource("StyleBoxFlat_k7cni")
+value = 100.0
+show_percentage = false
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1, -39)
+shape = SubResource("CapsuleShape2D_x8t4o")
+debug_color = Color(0.94902, 0.101961, 0.505882, 0.419608)
